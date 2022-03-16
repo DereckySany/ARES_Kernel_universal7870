@@ -130,18 +130,6 @@ else
      CR_PERMISSIVE="1"
 fi
 
-# Options
-read -p "Kernel SU? (y/n) > " yn
-if [ "$yn" = "Y" -o "$yn" = "y" ]; then
-     echo " WARNING : KernelSU Enabled!"
-     export CONFIG_ASSISTED_SUPERUSER=y
-     CR_ROOT="1"
-fi
-  if [ $CR_HALLIC = "1" ]; then
-    echo " Inverting HALL_IC Status"
-    echo "CONFIG_HALL_EVENT_REVERSE=y" >> $CR_DIR/arch/$CR_ARCH/configs/tmp_defconfig
-  fi
-
 BUILD_CLEAN()
 {
 if [ $CR_CLEAN = 1 ]; then
@@ -324,7 +312,7 @@ BUILD_DTB()
 	echo " "
 	echo "Building DTB for $CR_VARIANT"
 	# This source compiles dtbs while doing Image
-	./scripts/dtbtool_exynos/dtbTool -o $CR_DTB -d $CR_DTS/ -s 2048
+	./scripts/dtbtool_exynos/dtbtool -o $CR_DTB -d $CR_DTS/ -s 2048
 	if [ ! -e $CR_DTB ]; then
     exit 0;
     echo "DTB Failed to Compile"
