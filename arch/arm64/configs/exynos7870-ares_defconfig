@@ -2,3 +2,6 @@
 #
 # AresKernel
 #
+# hotplug
+# CONFIG_EXYNOS_CPU_HOTPLUG is not set
+# CONFIG_EXYNOS_HOTPLUG_GOVERNOR is not set
