@@ -129,6 +129,17 @@ else
      CR_HALLIC="1"
      CR_PERMISSIVE="1"
 fi
+# Options
+read -p "Kernel SU? (y/n) > " yn
+if [ "$yn" = "Y" -o "$yn" = "y" ]; then
+     echo " WARNING : KernelSU Enabled!"
+     export CONFIG_ASSISTED_SUPERUSER=y
+     CR_ROOT="1"
+fi
+#if [ $CR_HALLIC = "1" ]; then
+#    echo " Inverting HALL_IC Status"
+#    echo "CONFIG_HALL_EVENT_REVERSE=y" >> $CR_DIR/arch/$CR_ARCH/configs/tmp_defconfig
+#fi
 
 BUILD_CLEAN()
 {
